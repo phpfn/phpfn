@@ -9,9 +9,9 @@
         "functional",
         "type"
     ],
-    "homepage": "https://github.com/phpfn/symbol",
+    "homepage": "https://github.com/phpfn",
     "support": {
-        "issues": "https://github.com/phpfn/symbol/issues",
+        "issues": "https://github.com/phpfn/phpfn/issues",
         "source": "https://github.com/phpfn/symbol"
     },
     "authors": [

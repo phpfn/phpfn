@@ -9,6 +9,26 @@ This `symbol` library implementation is similar to alternative types in:
 4) Atoms in Erlang: [http://erlang.org/doc/reference_manual/data_types.html#atom](http://erlang.org/doc/reference_manual/data_types.html#atom)
 5) ...e.g.
 
+## Installation
+
+Library can be installed into any PHP application:
+- Using [`Composer`](https://getcomposer.org/) dependency manager 
+- [The Force](https://www.youtube.com/watch?v=o2we_B6hDrY) for the Jedi Developers
+
+```sh
+$ composer require phpfn/symbol
+```
+
+In order to access library make sure to include `vendor/autoload.php` 
+in your file.
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+```
+
+
 ## Usage
 
 In order to create a new symbol data type, you should use 
@@ -22,7 +42,7 @@ $a = symbol();
 
 // OR
 
-$b = \Serafim\Symbol\Symbol::create();
+$b = \Fun\Symbol\Symbol::create();
 
 ```
 
@@ -94,31 +114,31 @@ Notice that the symbols are neither a string, nor a number, nor anything (almost
 ```php
 <?php
 
-var_dump(\is_string(symbol()));
+var_dump(is_string(symbol()));
 // expected output: false
 
-var_dump(\is_int(symbol()));
+var_dump(is_int(symbol()));
 // expected output: false
 
-var_dump(\is_float(symbol()));
+var_dump(is_float(symbol()));
 // expected output: false
 
-var_dump(\is_bool(symbol()));
+var_dump(is_bool(symbol()));
 // expected output: false
 
-var_dump(\is_array(symbol()));
+var_dump(is_array(symbol()));
 // expected output: false
 
-var_dump(\is_object(symbol()));
+var_dump(is_object(symbol()));
 // expected output: false
 
-var_dump(\is_null(symbol()));
+var_dump(is_null(symbol()));
 // expected output: false
 
-var_dump(\is_symbol(symbol()));
+var_dump(is_symbol(symbol()));
 // expected output: true
 
-var_dump(\is_resource(symbol()));
+var_dump(is_resource(symbol()));
 // expected output: true
 ```
 
@@ -210,5 +230,4 @@ var_dump(Symbol::keyFor(Symbol::for('a')));
 
 var_dump(Symbol::keyFor(Symbol::create('a')));
 // expected output: null
-
 ```

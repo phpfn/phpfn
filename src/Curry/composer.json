@@ -4,9 +4,9 @@
     "type": "library",
     "description": "Convenient implementation of function currying and partial application",
     "keywords": ["currying", "partial application", "functional", "lambda", "closure", "sugar"],
-    "homepage": "https://github.com/phpfn/curry",
+    "homepage": "https://github.com/phpfn",
     "support": {
-        "issues": "https://github.com/phpfn/curry/issues",
+        "issues": "https://github.com/phpfn/phpfn/issues",
         "source": "https://github.com/phpfn/curry"
     },
     "authors": [
@@ -33,5 +33,10 @@
         "psr-4": {
             "Fun\\Curry\\Tests\\": "tests"
         }
-    }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

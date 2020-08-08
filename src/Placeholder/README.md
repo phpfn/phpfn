@@ -1,9 +1,27 @@
 # Placeholder
 
-
 Library provides a placeholder implementation for currying functions,
 partial applications, pipe operator, and other syntactic structures 
 hat allow specifying default values.
+
+## Installation
+
+Library can be installed into any PHP application:
+- Using [`Composer`](https://getcomposer.org/) dependency manager 
+- [The Force](https://www.youtube.com/watch?v=o2we_B6hDrY) for the Jedi Developers
+
+```sh
+$ composer require phpfn/placeholder
+```
+
+In order to access library make sure to include `vendor/autoload.php` 
+in your file.
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+```
 
 ## Usage
 

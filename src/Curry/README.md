@@ -11,15 +11,24 @@ currying and partial application.
 - [Api](#api)
     - [Functions](#functions)
     - [Methods of the curried function](#curried)
-    
 
 ## Installation
 
-To install the package, use [Composer](https://getcomposer.org/doc/) 
-(Or [The Force](https://www.youtube.com/watch?v=o2we_B6hDrY) for the Jedi Developers).
+Library can be installed into any PHP application:
+- Using [`Composer`](https://getcomposer.org/) dependency manager 
+- [The Force](https://www.youtube.com/watch?v=o2we_B6hDrY) for the Jedi Developers
 
-```bash
-composer require serafim/curry
+```sh
+$ composer require phpfn/curry
+```
+
+In order to access library make sure to include `vendor/autoload.php` 
+in your file.
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
 ```
 
 ## Usage

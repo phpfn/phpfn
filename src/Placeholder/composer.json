@@ -10,9 +10,9 @@
         "curry",
         "partial application"
     ],
-    "homepage": "https://github.com/phpfn/placeholder",
+    "homepage": "https://github.com/phpfn",
     "support": {
-        "issues": "https://github.com/phpfn/placeholder/issues",
+        "issues": "https://github.com/phpfn/phpfn/issues",
         "source": "https://github.com/phpfn/placeholder"
     },
     "authors": [

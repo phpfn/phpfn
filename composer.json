@@ -1,5 +1,22 @@
 {
     "name": "phpfn/phpfn",
+    "license": "MIT",
+    "type": "library",
+    "description": "Centralized monorepository for functional libraries",
+    "keywords": [
+        "functional"
+    ],
+    "homepage": "https://github.com/phpfn",
+    "support": {
+        "issues": "https://github.com/phpfn/phpfn/issues",
+        "source": "https://github.com/phpfn/phpfn"
+    },
+    "authors": [
+        {
+            "name": "Kirill Nesmeyanov",
+            "email": "nesk@xakep.ru"
+        }
+    ],
     "autoload": {
         "files": [
             "src/Curry/src/helpers.php",
@@ -45,6 +62,9 @@
     "scripts": {
         "merge": "monorepo-builder merge",
         "split": "monorepo-builder split"
+    },
+    "config": {
+        "sort-packages": true
     },
     "minimum-stability": "dev",
     "prefer-stable": true
