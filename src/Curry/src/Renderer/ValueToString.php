@@ -11,9 +11,6 @@ declare(strict_types=1);
 
 namespace Fun\Curry\Renderer;
 
-/**
- * Trait ValueToString
- */
 trait ValueToString
 {
     /**

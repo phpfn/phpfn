@@ -7,6 +7,7 @@
     <a href="https://codeclimate.com/github/phpfn/phpfn/maintainability"><img src="https://api.codeclimate.com/v1/badges/47017eee0be4b7544b1b/maintainability" /></a>
 </p>
 <p align="center">
-    <a href="https://packagist.org/packages/phpfn/"><img src="https://img.shields.io/badge/PHP-7.4+-6f4ca5.svg" alt="PHP 7.4+"></a>
+    <a href="https://packagist.org/packages/phpfn/"><img src="https://img.shields.io/badge/PHP-7.4+-236d98.svg" alt="PHP 7.4+"></a>
+    <a href="https://packagist.org/packages/phpfn/"><img src="https://img.shields.io/badge/PHP-8.0%20Compatible-236d98.svg" alt="PHP 8.0 Compatible"></a>
     <a href="https://raw.githubusercontent.com/phpfn/phpfn/master/LICENSE.md"><img src="https://poser.pugx.org/phpfn/phpfn/license" alt="License MIT"></a>
 </p>
