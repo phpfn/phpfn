@@ -13,9 +13,6 @@ namespace Fun\Curry\Renderer;
 
 use Fun\Curry\Renderable;
 
-/**
- * Class ArgumentsRenderer
- */
 class ClosureRenderer implements Renderable
 {
     use ValueToString;
@@ -121,7 +118,7 @@ class ClosureRenderer implements Renderable
      */
     public static function fallback(\Closure $closure): string
     {
-        return 'curried ' . (string)\print_r($closure, true);
+        return 'curried ' . \print_r($closure, true);
     }
 
     /**
@@ -136,7 +133,7 @@ class ClosureRenderer implements Renderable
             $_this = $this->getThis();
             $_self = $this->getSelf();
 
-            $result[] = \sprintf('Curried(%s ... %s) #%d => {', $left, $right, $id);
+            $result[] = \sprintf('curried(%s ... %s) #%d => {', $left, $right, $id);
 
             if ($_self) {
                 $result[] = \sprintf('    class: "%s"', $_self);
@@ -148,6 +145,8 @@ class ClosureRenderer implements Renderable
 
             if ($this->reflection->isInternal()) {
                 $ext = $this->reflection->getExtension();
+
+                \assert($ext !== null, 'Internal PHP Error');
 
                 $result[] = \sprintf('    extension: %s', $ext->getName());
                 $result[] = \sprintf('    version: %s', $ext->getVersion());

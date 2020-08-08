@@ -66,7 +66,7 @@ trait ValueToString
      * @param object $argument
      * @return string
      */
-    private function objectToString($argument): string
+    private function objectToString(object $argument): string
     {
         $class = \basename(\str_replace('\\', '/', \get_class($argument)));
 
@@ -83,7 +83,7 @@ trait ValueToString
     }
 
     /**
-     * @param callable $argument
+     * @param callable|object|\Closure $argument
      * @return string
      */
     private function callableToString(callable $argument): string

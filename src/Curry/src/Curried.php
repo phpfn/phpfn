@@ -12,10 +12,8 @@ declare(strict_types=1);
 namespace Fun\Curry;
 
 use Fun\Curry\Renderer\ClosureRenderer;
+use Fun\Placeholder\Placeholder;
 
-/**
- * Class Curried
- */
 final class Curried implements \Countable, Renderable, Invokable
 {
     /**
@@ -40,6 +38,7 @@ final class Curried implements \Countable, Renderable, Invokable
 
     /**
      * Curried constructor.
+     *
      * @param \Closure $callable
      */
     private function __construct(\Closure $callable)
@@ -78,7 +77,7 @@ final class Curried implements \Countable, Renderable, Invokable
      */
     public static function fromClosure(\Closure $callable): self
     {
-        $ctx               = new static($callable);
+        $ctx = new static($callable);
         $ctx->maxArguments = self::arguments($callable);
 
         return $ctx;
@@ -170,7 +169,7 @@ final class Curried implements \Countable, Renderable, Invokable
      */
     private function isPlaceholder($value): bool
     {
-        return $value === self::PLACEHOLDER;
+        return Placeholder::match($value);
     }
 
     /**
@@ -187,6 +186,18 @@ final class Curried implements \Countable, Renderable, Invokable
     public function count(): int
     {
         return \count($this->filter());
+    }
+
+    /**
+     * @return array
+     */
+    private function filter(): array
+    {
+        $result = \array_merge($this->leftArguments, $this->rightArguments);
+
+        return \array_filter($result, function ($argument): bool {
+            return ! $this->isPlaceholder($argument);
+        });
     }
 
     /**
@@ -249,17 +260,5 @@ final class Curried implements \Countable, Renderable, Invokable
         }
 
         return (string)$renderer;
-    }
-
-    /**
-     * @return array
-     */
-    private function filter(): array
-    {
-        $result = \array_merge($this->leftArguments, $this->rightArguments);
-
-        return \array_filter($result, function ($argument): bool {
-            return ! $this->isPlaceholder($argument);
-        });
     }
 }
