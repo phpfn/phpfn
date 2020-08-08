@@ -1,0 +1,49 @@
+{
+    "name": "serafim/placeholder",
+    "type": "library",
+    "description": "Simple placeholder implementation for functional constructions",
+    "license": "MIT",
+    "keywords": [
+        "placeholder",
+        "functional",
+        "high order",
+        "curry",
+        "partial application"
+    ],
+    "homepage": "https://github.com/SerafimArts/Placeholder",
+    "support": {
+        "issues": "https://github.com/SerafimArts/Placeholder/issues",
+        "source": "https://github.com/SerafimArts/Placeholder"
+    },
+    "authors": [
+        {
+            "name": "Kirill Nesmeyanov",
+            "email": "nesk@xakep.ru"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.3",
+        "serafim/symbol": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Serafim\\Placeholder\\": "src/"
+        },
+        "files": [
+            "./src/helpers.php"
+        ]
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~7.5"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Serafim\\Placeholder\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

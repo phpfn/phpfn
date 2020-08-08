@@ -1,0 +1,13 @@
+{
+    "name": "phpfn/phpfn",
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "symplify/monorepo-builder": "^8.0"
+    },
+    "scripts": {
+        "merge": "monorepo-builder merge",
+        "split": "monorepo-builder split"
+    }
+}
