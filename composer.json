@@ -1,13 +1,51 @@
 {
     "name": "phpfn/phpfn",
+    "autoload": {
+        "files": [
+            "src/Curry/src/helpers.php",
+            "src/Pipe/src/helpers.php",
+            "src/Placeholder/src/helpers.php",
+            "src/Symbol/src/helpers.php"
+        ],
+        "psr-4": {
+            "Fun\\Curry\\": "src/Curry/src",
+            "Fun\\Pipe\\": "src/Pipe/src",
+            "Fun\\Placeholder\\": "src/Placeholder/src",
+            "Fun\\Symbol\\": "src/Symbol/src"
+        }
+    },
+    "autoload-dev": {
+        "files": [
+            "src/Pipe/tests/stubs/functions.php"
+        ],
+        "psr-4": {
+            "Fun\\Curry\\Tests\\": "src/Curry/tests",
+            "Fun\\Pipe\\Tests\\": "src/Pipe/tests",
+            "Fun\\Placeholder\\Tests\\": "src/Placeholder/tests",
+            "Fun\\Symbol\\Tests\\": "src/Symbol/tests"
+        }
+    },
+    "replace": {
+        "phpfn/curry": "self.version",
+        "phpfn/pipe": "self.version",
+        "phpfn/placeholder": "self.version",
+        "phpfn/symbol": "self.version"
+    },
     "require": {
         "php": ">=7.4"
     },
     "require-dev": {
+        "laminas/laminas-code": "~3.4",
+        "phpunit/phpunit": "^9.0",
+        "roave/security-advisories": "dev-master",
+        "symfony/console": "~4.3|~5.0",
+        "symfony/var-dumper": "~4.3|~5.0",
         "symplify/monorepo-builder": "^8.0"
     },
     "scripts": {
         "merge": "monorepo-builder merge",
         "split": "monorepo-builder split"
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

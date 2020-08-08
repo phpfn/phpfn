@@ -7,9 +7,9 @@
  */
 declare(strict_types=1);
 
-namespace Serafim\Placeholder\Tests;
+namespace Fun\Placeholder\Tests;
 
-use Serafim\Placeholder\Placeholder;
+use Fun\Placeholder\Placeholder;
 
 /**
  * Class PlaceholderTestCase

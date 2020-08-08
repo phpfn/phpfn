@@ -7,12 +7,12 @@
 >
     <testsuites>
         <testsuite name="Test Suite">
-            <directory suffix="TestCase.php">tests</directory>
+            <directory suffix="TestCase.php">src/*/tests</directory>
         </testsuite>
     </testsuites>
     <filter>
         <whitelist>
-            <directory suffix=".php">src</directory>
+            <directory suffix=".php">src/*/src</directory>
         </whitelist>
     </filter>
     <php>

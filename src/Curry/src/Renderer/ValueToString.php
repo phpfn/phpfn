@@ -1,13 +1,15 @@
 <?php
+
 /**
- * This file is part of Curry package.
+ * This file is part of phpfn package.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 declare(strict_types=1);
 
-namespace Serafim\Curry\Renderer;
+namespace Fun\Curry\Renderer;
 
 /**
  * Trait ValueToString
@@ -33,7 +35,31 @@ trait ValueToString
             return $this->valueToString($item, false);
         };
 
-        return \implode(', ', \iterator_map($map, $argument));
+        return \implode(', ', $this->iteratorMap($map, $argument));
+    }
+
+    /**
+     * Method returns an array containing all the elements of
+     * $iterable after applying the callback function to each one.
+     *
+     * The number of parameters that the callback function accepts should
+     * match the number of iterable arguments passed to the iterator_map()
+     *
+     * @param callable $map Callback function to run for each element in each iterable.
+     * @param iterable ...$iterable An iterable items to run through the callback function.
+     * @return array
+     */
+    private function iteratorMap(callable $map, iterable ...$iterable): array
+    {
+        $result = [];
+
+        foreach ($iterable as $it) {
+            foreach ($it as $key => $value) {
+                $result[] = $map($value, $key);
+            }
+        }
+
+        return $result;
     }
 
     /**

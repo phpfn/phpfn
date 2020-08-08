@@ -1,57 +1,74 @@
 <?php
+
 /**
- * This file is part of Curry package.
+ * This file is part of phpfn package.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 declare(strict_types=1);
 
+use Fun\Curry\Curried;
 
-if (! \function_exists('\\spl_object_id')) {
+if (! \function_exists('\\curry')) {
     /**
-     * This function returns a unique identifier for the object.
-     * The object id is unique for the lifetime of the object.
-     * Once the object is destroyed, its id may be reused for other
-     * objects. This behavior is similar to spl_object_hash().
-     *
-     * @param object $obj Any object.
-     * @return int An integer identifier that is unique for each currently existing
-     *             object and is always the same for each object.
+     * @see lcurry
+     * {@inheritdoc}
+     * @return callable|Curried
      */
-    function spl_object_id($obj): int
+    function curry($fn, ...$args): callable
     {
-        \ob_start();
-        \debug_zval_dump($obj);
-        \preg_match_all('/\w+\(\w+\)#(\d+)/iu', \ob_get_clean(), $matches);
-
-        return (int)($matches[1][0] ?? 0);
+        return Curried::new($fn)->curry(...$args);
     }
 }
 
 
-if (! \function_exists('\\iterator_map')) {
+if (! \function_exists('\\lcurry')) {
     /**
-     * iterator_map() returns an array containing all the elements of
-     * $iterable after applying the callback function to each one.
+     * Returns a function from a function to which you can partially
+     * apply the required arguments from left to right.
      *
-     * The number of parameters that the callback function accepts should
-     * match the number of iterable arguments passed to the iterator_map()
-     *
-     * @param callable $map Callback function to run for each element in each iterable.
-     * @param iterable ...$iterable An iterable items to run through the callback function.
-     * @return array
+     * @param callable|\ReflectionFunctionAbstract $fn An applicant function
+     * @param array $args Set of arguments for left currying
+     * @return callable|Curried Returns a partially applied function
      */
-    function iterator_map(callable $map, iterable ...$iterable): array
+    function lcurry($fn, ...$args): callable
     {
-        $result = [];
+        return Curried::new($fn)->lcurry(...$args);
+    }
+}
 
-        foreach ($iterable as $it) {
-            foreach ($it as $key => $value) {
-                $result[] = $map($value, $key);
-            }
-        }
 
-        return $result;
+if (! \function_exists('\\rcurry')) {
+    /**
+     * Returns a function from a function to which you can partially
+     * apply the required arguments from right to left.
+     *
+     * @param callable|\ReflectionFunctionAbstract $fn An applicant function
+     * @param array $args Set of arguments for right currying
+     * @return callable|Curried Returns a partially applied function
+     */
+    function rcurry($fn, ...$args): callable
+    {
+        return Curried::new($fn)->rcurry(...$args);
+    }
+}
+
+
+if (! \function_exists('\\uncurry')) {
+    /**
+     * Unpacks the curried function and returns the result of this function.
+     *
+     * In the event that the function is not completed (that is, there are not
+     * enough arguments), it returns a normal closure object, with which you
+     * can supplement the missing argument.
+     *
+     * @param callable|Curried $fn An applicant php or curried function
+     * @return int|float|bool|string|resource|object|\Closure Function result or closure
+     */
+    function uncurry(callable $fn): \Closure
+    {
+        return ($fn instanceof Curried ? $fn : Curried::new($fn))->uncurry();
     }
 }

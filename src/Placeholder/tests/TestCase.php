@@ -7,7 +7,7 @@
  */
 declare(strict_types=1);
 
-namespace Serafim\Placeholder\Tests;
+namespace Fun\Placeholder\Tests;
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
 

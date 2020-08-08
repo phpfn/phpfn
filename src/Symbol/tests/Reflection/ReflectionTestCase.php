@@ -1,21 +1,22 @@
 <?php
+
 /**
- * This file is part of Symbol package.
+ * This file is part of phpfn package.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 declare(strict_types=1);
 
-namespace Serafim\Symbol\Tests\Reflection;
+namespace Fun\Symbol\Tests\Reflection;
 
-use Serafim\Symbol\ReflectionSymbol;
-use Serafim\Symbol\Symbol;
-use Serafim\Symbol\Tests\TestCase;
+use Fun\Symbol\ReflectionSymbol;
+use Fun\Symbol\Symbol;
+use Fun\Symbol\Tests\TestCase;
+use PHPUnit\Framework\Exception;
+use PHPUnit\Framework\ExpectationFailedException;
 
-/**
- * Class ReflectionTestCase
- */
 abstract class ReflectionTestCase extends TestCase
 {
     /**
@@ -31,7 +32,7 @@ abstract class ReflectionTestCase extends TestCase
             'bool'     => [true],
             'array'    => [[42]],
             'object'   => [new \StdClass()],
-            'resource' => [\fopen('php://memory', 'rb')],
+            'resource' => [fopen('php://memory', 'rb')],
         ];
     }
 
@@ -64,7 +65,7 @@ abstract class ReflectionTestCase extends TestCase
 
     /**
      * @param mixed $symbol
-     * @return \Serafim\Symbol\ReflectionSymbol
+     * @return ReflectionSymbol
      */
     abstract protected function reflection($symbol): ReflectionSymbol;
 
@@ -92,7 +93,7 @@ abstract class ReflectionTestCase extends TestCase
      * @param mixed $symbol
      * @param string $name
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws ExpectationFailedException
      */
     public function testName($symbol, string $name): void
     {
@@ -106,7 +107,7 @@ abstract class ReflectionTestCase extends TestCase
      *
      * @param mixed $symbol
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws ExpectationFailedException
      */
     public function testFileName($symbol): void
     {
@@ -122,7 +123,7 @@ abstract class ReflectionTestCase extends TestCase
      * @param string $_
      * @param int $line
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws ExpectationFailedException
      */
     public function testStartLine($symbol, string $_, int $line): void
     {
@@ -138,7 +139,7 @@ abstract class ReflectionTestCase extends TestCase
      * @param mixed $_
      * @param int $line
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws ExpectationFailedException
      */
     public function testEndLine($symbol, $_, int $line): void
     {
@@ -153,7 +154,7 @@ abstract class ReflectionTestCase extends TestCase
      * @param mixed $symbol
      * @param string $name
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws ExpectationFailedException
      */
     public function testRenderable($symbol, string $name): void
     {
@@ -170,7 +171,7 @@ abstract class ReflectionTestCase extends TestCase
      * @param mixed $__
      * @param bool $isGlobal
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws ExpectationFailedException
      */
     public function testIsGlobal($symbol, $_, $__, bool $isGlobal): void
     {
@@ -187,7 +188,7 @@ abstract class ReflectionTestCase extends TestCase
      * @param mixed $__
      * @param bool $isGlobal
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws ExpectationFailedException
      */
     public function testModifiers($symbol, $_, $__, bool $isGlobal): void
     {
@@ -197,35 +198,6 @@ abstract class ReflectionTestCase extends TestCase
             $isGlobal ? ReflectionSymbol::IS_GLOBAL : 0,
             $reflection->getModifiers()
         );
-    }
-
-    /**
-     * @dataProvider dataProvider
-     *
-     * @param mixed $symbol
-     * @param string $name
-     * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
-     */
-    public function testDebuggable($symbol, string $name): void
-    {
-        $reflection = $this->reflection($symbol);
-
-        \ob_start();
-        \var_dump($reflection);
-
-        $expects =
-            '/class %s#\d+ \(\d+\) \{\n' .
-            '  public \$name =>\n' .
-            '  string\(\d+\) "%s"\n' .
-            '\}$/';
-
-        $expects = \vsprintf($expects, [
-            \preg_quote(ReflectionSymbol::class, '/'),
-            \preg_quote($name, '/'),
-        ]);
-
-        $this->assertRegExp($expects, \ob_get_clean());
     }
 
     /**
@@ -247,8 +219,8 @@ abstract class ReflectionTestCase extends TestCase
      *
      * @param mixed $symbol
      * @return void
-     * @throws \PHPUnit\Framework\Exception
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws Exception
+     * @throws ExpectationFailedException
      * @throws \ReflectionException
      */
     public function testExportWithPrint($symbol): void
@@ -265,8 +237,8 @@ abstract class ReflectionTestCase extends TestCase
      *
      * @param mixed $symbol
      * @return void
-     * @throws \PHPUnit\Framework\Exception
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws Exception
+     * @throws ExpectationFailedException
      * @throws \ReflectionException
      */
     public function testExportWithReturn($symbol): void

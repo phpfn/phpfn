@@ -1,7 +1,7 @@
 {
-    "name": "serafim/symbol",
+    "name": "phpfn/symbol",
     "type": "library",
-    "description": "The Symbol type PHP implementation",
+    "description": "The Symbol type implementation",
     "license": "MIT",
     "keywords": [
         "placeholder",
@@ -9,10 +9,10 @@
         "functional",
         "type"
     ],
-    "homepage": "https://github.com/SerafimArts/Symbol",
+    "homepage": "https://github.com/phpfn/symbol",
     "support": {
-        "issues": "https://github.com/SerafimArts/Symbol/issues",
-        "source": "https://github.com/SerafimArts/Symbol"
+        "issues": "https://github.com/phpfn/symbol/issues",
+        "source": "https://github.com/phpfn/symbol"
     },
     "authors": [
         {
@@ -21,22 +21,22 @@
         }
     ],
     "require": {
-        "php": ">=7.1.3"
+        "php": ">=7.4"
     },
     "autoload": {
         "psr-4": {
-            "Serafim\\Symbol\\": "src/"
+            "Fun\\Symbol\\": "src"
         },
         "files": [
-            "./src/helpers.php"
+            "src/helpers.php"
         ]
     },
     "require-dev": {
-        "phpunit/phpunit": "~7.5"
+        "phpunit/phpunit": "^9.0"
     },
     "autoload-dev": {
         "psr-4": {
-            "Serafim\\Symbol\\Tests\\": "tests/"
+            "Fun\\Symbol\\Tests\\": "tests"
         }
     },
     "config": {

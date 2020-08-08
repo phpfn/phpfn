@@ -1,17 +1,4 @@
-<p align="center">
-    <h1>Symbol</h1>
-</p>
-<p align="center">
-    <a href="https://travis-ci.org/SerafimArts/Symbol"><img src="https://travis-ci.org/SerafimArts/Symbol.svg" alt="Travis CI" /></a>
-    <a href="https://codeclimate.com/github/SerafimArts/Symbol/test_coverage"><img src="https://api.codeclimate.com/v1/badges/43f91ec27407081b8d51/test_coverage" /></a>
-    <a href="https://codeclimate.com/github/SerafimArts/Symbol/maintainability"><img src="https://api.codeclimate.com/v1/badges/43f91ec27407081b8d51/maintainability" /></a>
-</p>
-<p align="center">
-    <a href="https://packagist.org/packages/serafim/symbol"><img src="https://img.shields.io/badge/PHP-7.1+-6f4ca5.svg" alt="PHP 7.1+"></a>
-    <a href="https://packagist.org/packages/serafim/symbol"><img src="https://poser.pugx.org/serafim/symbol/version" alt="Latest Stable Version"></a>
-    <a href="https://packagist.org/packages/serafim/symbol"><img src="https://poser.pugx.org/serafim/symbol/downloads" alt="Total Downloads"></a>
-    <a href="https://raw.githubusercontent.com/SerafimArts/Symbol/master/LICENSE.md"><img src="https://poser.pugx.org/serafim/symbol/license" alt="License MIT"></a>
-</p>
+# Symbol
 
 Symbol is a special primitive data type, indicating an unique identifier. 
 This `symbol` library implementation is similar to alternative types in:
@@ -160,7 +147,7 @@ just use the `Symbol::key()` method:
 
 ```php
 <?php
-use Serafim\Symbol\Symbol;
+use Fun\Symbol\Symbol;
 
 var_dump(Symbol::key(symbol('hello')));
 // expected output: "hello"
@@ -179,7 +166,7 @@ And you can find out some details about this type:
 ```php
 <?php
 
-use Serafim\Symbol\Symbol;
+use Fun\Symbol\Symbol;
 
 $reflection = Symbol::getReflection(Symbol::create('hello'));
 
@@ -202,7 +189,7 @@ with this key.
 ```php
 <?php
 
-use Serafim\Symbol\Symbol;
+use Fun\Symbol\Symbol;
 
 var_dump(Symbol::for('a') === Symbol::for('a'));
 // expected output: true

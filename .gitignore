@@ -1,5 +1,15 @@
+# IDEA
 .idea/
-vendor/
+*.iml
 
+# Composer
+vendor/
 composer.lock
+composer.phar
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Cache
 .phpunit.result.cache

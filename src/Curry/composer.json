@@ -1,12 +1,13 @@
 {
-    "name": "serafim/curry",
+    "name": "phpfn/curry",
     "license": "MIT",
     "type": "library",
     "description": "Convenient implementation of function currying and partial application",
     "keywords": ["currying", "partial application", "functional", "lambda", "closure", "sugar"],
+    "homepage": "https://github.com/phpfn/curry",
     "support": {
-        "issues": "https://github.com/SerafimArts/Curry/issues",
-        "source": "https://github.com/SerafimArts/Curry"
+        "issues": "https://github.com/phpfn/curry/issues",
+        "source": "https://github.com/phpfn/curry"
     },
     "authors": [
         {
@@ -15,25 +16,22 @@
         }
     ],
     "require": {
-        "php": ">=7.1.3"
+        "php": ">=7.4"
     },
     "autoload": {
         "psr-4": {
-            "Serafim\\Curry\\": "src/"
+            "Fun\\Curry\\": "src"
         },
         "files": [
-            "src/helpers.php",
-            "src/functions.php"
+            "src/helpers.php"
         ]
     },
     "require-dev": {
-        "phpunit/phpunit": "~7.1",
-        "illuminate/support": "~5.5",
-        "symfony/var-dumper": "~4.0"
+        "phpunit/phpunit": "^9.0"
     },
     "autoload-dev": {
         "psr-4": {
-            "Serafim\\Curry\\Tests\\": "tests/"
+            "Fun\\Curry\\Tests\\": "tests"
         }
     }
 }

@@ -1,26 +1,23 @@
 <?php
+
 /**
- * This file is part of Curry package.
+ * This file is part of phpfn package.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
+
 declare(strict_types=1);
 
-namespace Serafim\Curry;
+namespace Fun\Curry;
 
-use Serafim\Curry\Renderer\ClosureRenderer;
+use Fun\Curry\Renderer\ClosureRenderer;
 
 /**
  * Class Curried
  */
 final class Curried implements \Countable, Renderable, Invokable
 {
-    /**
-     * The placeholder for the given argument.
-     */
-    public const PLACEHOLDER = '_';
-
     /**
      * @var \Closure
      */
