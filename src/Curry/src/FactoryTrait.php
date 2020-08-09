@@ -39,7 +39,7 @@ trait FactoryTrait
             case $callable instanceof \ReflectionMethod:
                 return static::fromReflectionMethod($callable);
 
-            case $callable instanceof \ReflectionFunctionAbstract:
+            case $callable instanceof \ReflectionFunction:
                 return static::fromReflectionFunction($callable);
         }
 
@@ -89,10 +89,10 @@ trait FactoryTrait
     }
 
     /**
-     * @param \ReflectionFunctionAbstract $func
+     * @param \ReflectionFunction $func
      * @return CurriedFunctionInterface
      */
-    public static function fromReflectionFunction(\ReflectionFunctionAbstract $func): CurriedFunctionInterface
+    public static function fromReflectionFunction(\ReflectionFunction $func): CurriedFunctionInterface
     {
         return static::fromClosure($func->getClosure());
     }
