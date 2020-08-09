@@ -59,6 +59,11 @@
         "merge": "monorepo-builder merge",
         "split": "monorepo-builder split"
     },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "2.0-dev"
+        }
+    },
     "config": {
         "sort-packages": true
     },
