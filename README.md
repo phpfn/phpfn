@@ -41,3 +41,8 @@ This package includes
 - [`phpfn/pipe`](https://github.com/phpfn/pipe) for the ability to use a sequence of functions as a chain.
 - [`phpfn/placeholder`](https://github.com/phpfn/placeholder) is a placeholder (looks like that: `_`) symbol implementation.
 - [`phpfn/symbol`](https://github.com/phpfn/symbol) for the ability to create unique identifiers within the system.
+
+## See Also
+
+- https://github.com/nikic/iter
+- https://github.com/lstrojny/functional-php
