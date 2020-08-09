@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace Fun\Curry\Renderer;
 
+use Fun\Placeholder\Placeholder;
+
 trait ValueToString
 {
     /**
@@ -19,7 +21,7 @@ trait ValueToString
      */
     private function scalarToString($argument): string
     {
-        return (string)$argument;
+        return \get_debug_type($argument);
     }
 
     /**
@@ -107,8 +109,12 @@ trait ValueToString
      * @param bool $deep
      * @return string
      */
-    private function valueToString($argument, bool $deep = true): string
+    protected function valueToString($argument, bool $deep = true): string
     {
+        if (Placeholder::match($argument)) {
+            return '_';
+        }
+
         if (\is_scalar($argument)) {
             return $this->scalarToString($argument);
         }

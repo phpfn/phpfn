@@ -11,8 +11,8 @@ declare(strict_types=1);
 
 namespace Fun\Symbol\Tests;
 
+use Fun\Symbol\Exception\TypeError;
 use PHPUnit\Framework\TestCase as BaseTestCase;
-use Fun\Symbol\TypeError;
 
 /**
  * Class TestCase

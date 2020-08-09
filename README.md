@@ -35,7 +35,8 @@ require __DIR__ . '/vendor/autoload.php';
 
 This package includes
 
+- [`phpfn/curry`](https://github.com/phpfn/curry) is an implementation of currying and partial application.
+- [`phpfn/immutable`](https://github.com/phpfn/immutable) is a little helper to ensure object immutability.
+- [`phpfn/pipe`](https://github.com/phpfn/pipe) for the ability to use a sequence of functions as a chain.
+- [`phpfn/placeholder`](https://github.com/phpfn/placeholder) is a placeholder (looks like that: `_`) symbol implementation.
 - [`phpfn/symbol`](https://github.com/phpfn/symbol) for the ability to create unique identifiers within the system.
-- [`phpfn/placeholder`](https://github.com/phpfn/placeholder) placeholder (looks like that: `_`) symbol implementation.
-- [`phpfn/pipe`](https://github.com/phpfn/pipe) the ability to use a sequence of functions as a chain.
-- [`phpfn/curry`](https://github.com/phpfn/curry) implementation of currying and partial application.

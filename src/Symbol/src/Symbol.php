@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace Fun\Symbol;
 
+use Fun\Symbol\Exception\TypeError;
+
 final class Symbol implements FactoryInterface
 {
     /**

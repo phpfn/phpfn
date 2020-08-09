@@ -9,7 +9,7 @@
 
 declare(strict_types=1);
 
-namespace Fun\Symbol;
+namespace Fun\Symbol\Exception;
 
 class TypeError extends \TypeError
 {

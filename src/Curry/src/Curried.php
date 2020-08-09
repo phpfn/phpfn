@@ -12,10 +12,14 @@ declare(strict_types=1);
 namespace Fun\Curry;
 
 use Fun\Curry\Renderer\ClosureRenderer;
+use Fun\Curry\Renderer\ValueToString;
 use Fun\Placeholder\Placeholder;
 
-final class Curried implements \Countable, Renderable, Invokable
+final class Curried implements CurriedFunctionInterface, FactoryInterface
 {
+    use ValueToString;
+    use FactoryTrait;
+
     /**
      * @var \Closure
      */
@@ -34,106 +38,26 @@ final class Curried implements \Countable, Renderable, Invokable
     /**
      * @var int
      */
-    private int $maxArguments = 0;
+    private int $maxArguments;
 
     /**
-     * Curried constructor.
-     *
      * @param \Closure $callable
+     * @param int $maxArguments
      */
-    private function __construct(\Closure $callable)
+    private function __construct(\Closure $callable, int $maxArguments = 0)
     {
         $this->context = $callable;
+        $this->maxArguments = $maxArguments;
     }
 
     /**
-     * @param callable|\ReflectionFunctionAbstract $callable
-     * @return $this|callable|Curried
-     */
-    public static function new($callable): callable
-    {
-        switch (true) {
-            case $callable instanceof \Closure:
-                return static::fromClosure($callable);
-
-            case \is_callable($callable):
-                return static::fromCallable($callable);
-
-            case $callable instanceof \ReflectionMethod:
-                return static::fromReflectionMethod($callable);
-
-            case $callable instanceof \ReflectionFunction:
-                return static::fromReflectionFunction($callable);
-        }
-
-        return static::fromClosure(fn() => $callable);
-    }
-
-    /**
-     * @param \Closure $callable
-     * @return $this|callable|Curried
-     */
-    public static function fromClosure(\Closure $callable): self
-    {
-        $ctx = new static($callable);
-        $ctx->maxArguments = self::arguments($callable);
-
-        return $ctx;
-    }
-
-    /**
-     * @param \Closure $callable
-     * @return int
-     */
-    private static function arguments(\Closure $callable): int
-    {
-        try {
-            $parameters = (new \ReflectionFunction($callable))->getParameters();
-
-            return \count($parameters);
-        } catch (\ReflectionException $e) {
-            return 1;
-        }
-    }
-
-    /**
-     * @param callable $callable
-     * @return $this|callable|Curried
-     */
-    public static function fromCallable(callable $callable): self
-    {
-        return static::fromClosure(\Closure::fromCallable($callable));
-    }
-
-    /**
-     * @param \ReflectionMethod $func
-     * @return $this|callable|Curried
-     */
-    public static function fromReflectionMethod(\ReflectionMethod $func): self
-    {
-        $func->setAccessible(true);
-
-        return static::fromClosure($func->getClosure());
-    }
-
-    /**
-     * @param \ReflectionFunction $func
-     * @return $this|callable|Curried
-     */
-    public static function fromReflectionFunction(\ReflectionFunction $func): self
-    {
-        return static::fromClosure($func->getClosure());
-    }
-
-    /**
-     * @param mixed ...$args
-     * @return $this|callable|mixed|Curried
+     * {@inheritDoc}
      */
     public function __invoke(...$args)
     {
         $curried = $this->lcurry(...$args);
 
-        if (\count($args) === 0 || $curried->isCompleted()) {
+        if (\count($args) === 0) {
             return $curried->reduce();
         }
 
@@ -141,8 +65,7 @@ final class Curried implements \Countable, Renderable, Invokable
     }
 
     /**
-     * @param mixed ...$args
-     * @return $this|callable|Curried
+     * {@inheritDoc}
      */
     public function lcurry(...$args): self
     {
@@ -171,9 +94,25 @@ final class Curried implements \Countable, Renderable, Invokable
     }
 
     /**
+     * @return mixed
+     */
+    public function reduce()
+    {
+        return ($this->context)(...$this->filter());
+    }
+
+    /**
+     * @return array
+     */
+    private function filter(): array
+    {
+        return Placeholder::filter([...$this->leftArguments, ...$this->rightArguments]);
+    }
+
+    /**
      * @return bool
      */
-    private function isCompleted(): bool
+    public function isCompleted(): bool
     {
         return $this->maxArguments <= $this->count();
     }
@@ -187,26 +126,7 @@ final class Curried implements \Countable, Renderable, Invokable
     }
 
     /**
-     * @return array
-     */
-    private function filter(): array
-    {
-        $result = \array_merge($this->leftArguments, $this->rightArguments);
-
-        return \array_filter($result, fn($argument): bool => ! $this->isPlaceholder($argument));
-    }
-
-    /**
-     * @return mixed
-     */
-    public function reduce()
-    {
-        return ($this->context)(...$this->filter());
-    }
-
-    /**
-     * @param mixed ...$args
-     * @return $this|static|callable|Curried
+     * {@inheritDoc}
      */
     public function rcurry(...$args): self
     {
@@ -226,9 +146,9 @@ final class Curried implements \Countable, Renderable, Invokable
     }
 
     /**
-     * @return \Closure
+     * {@inheritDoc}
      */
-    public function uncurry(): \Closure
+    public function toClosure(): \Closure
     {
         return function (...$args) {
             return $this->lcurry(...$args)->reduce();
@@ -236,8 +156,7 @@ final class Curried implements \Countable, Renderable, Invokable
     }
 
     /**
-     * @param mixed ...$args
-     * @return $this|callable|Curried
+     * {@inheritDoc}
      */
     public function curry(...$args): self
     {
@@ -256,5 +175,27 @@ final class Curried implements \Countable, Renderable, Invokable
         }
 
         return (string)$renderer;
+    }
+
+    /**
+     * @return array
+     */
+    public function __debugInfo(): array
+    {
+        return [
+            'context'        => $this->context,
+            'leftArguments'  => \array_map([$this, 'valueToString'], $this->leftArguments),
+            'rightArguments' => \array_map([$this, 'valueToString'], $this->rightArguments),
+        ];
+    }
+
+    /**
+     * @param \Closure $ctx
+     * @param int $arguments
+     * @return CurriedFunctionInterface
+     */
+    protected static function create(\Closure $ctx, int $arguments = 0): CurriedFunctionInterface
+    {
+        return new self($ctx, $arguments);
     }
 }

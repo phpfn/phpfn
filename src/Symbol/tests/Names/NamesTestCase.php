@@ -11,8 +11,8 @@ declare(strict_types=1);
 
 namespace Fun\Symbol\Tests\Names;
 
+use Fun\Symbol\Exception\TypeError;
 use Fun\Symbol\Tests\TestCase;
-use Fun\Symbol\TypeError;
 
 abstract class NamesTestCase extends TestCase
 {

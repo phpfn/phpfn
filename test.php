@@ -9,13 +9,10 @@
 
 declare(strict_types=1);
 
-namespace Fun\Placeholder\Tests;
+require __DIR__ . '/vendor/autoload.php';
 
-use PHPUnit\Framework\TestCase as BaseTestCase;
+$fn = curry(function (...$args) {
 
-/**
- * Class TestCase
- */
-abstract class TestCase extends BaseTestCase
-{
-}
+});
+
+var_dump($fn(_, _));

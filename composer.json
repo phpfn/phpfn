@@ -5,12 +5,14 @@
     "autoload": {
         "files": [
             "src/Curry/src/helpers.php",
+            "src/Immutable/src/helpers.php",
             "src/Pipe/src/helpers.php",
             "src/Placeholder/src/helpers.php",
             "src/Symbol/src/helpers.php"
         ],
         "psr-4": {
             "Fun\\Curry\\": "src/Curry/src",
+            "Fun\\Immutable\\": "src/Immutable/src",
             "Fun\\Pipe\\": "src/Pipe/src",
             "Fun\\Placeholder\\": "src/Placeholder/src",
             "Fun\\Symbol\\": "src/Symbol/src"
@@ -22,6 +24,7 @@
         ],
         "psr-4": {
             "Fun\\Curry\\Tests\\": "src/Curry/tests",
+            "Fun\\Immutable\\Tests\\": "src/Immutable/tests",
             "Fun\\Pipe\\Tests\\": "src/Pipe/tests",
             "Fun\\Placeholder\\Tests\\": "src/Placeholder/tests",
             "Fun\\Symbol\\Tests\\": "src/Symbol/tests"
@@ -29,6 +32,7 @@
     },
     "replace": {
         "phpfn/curry": "self.version",
+        "phpfn/immutable": "self.version",
         "phpfn/pipe": "self.version",
         "phpfn/placeholder": "self.version",
         "phpfn/symbol": "self.version"
@@ -44,9 +48,12 @@
         "squizlabs/php_codesniffer": "^3.0",
         "symfony/console": "~4.3|~5.0",
         "symfony/var-dumper": "~4.3|~5.0",
-        "symplify/monorepo-builder": "^8.0"
+        "symplify/monorepo-builder": "^8.0",
+        "vimeo/psalm": "^3.6"
     },
     "scripts": {
+        "psalm": "psalm",
+        "phpunit": "phpunit --testdox --debug -d tests",
         "phpcbf": "phpcbf -p --standard=PSR12 src",
         "phpcs": "phpcs -p --standard=PSR12 src",
         "merge": "monorepo-builder merge",

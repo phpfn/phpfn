@@ -1,0 +1,46 @@
+{
+    "name": "phpfn/immutable",
+    "description": "Simple helper to ensure immutable objects",
+    "license": "MIT",
+    "keywords": [
+        "immutable",
+        "stateless",
+        "functional",
+        "sugar"
+    ],
+    "homepage": "https://github.com/phpfn",
+    "support": {
+        "issues": "https://github.com/phpfn/phpfn/issues",
+        "source": "https://github.com/phpfn/immutable"
+    },
+    "authors": [
+        {
+            "name": "Kirill Nesmeyanov",
+            "email": "nesk@xakep.ru"
+        }
+    ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Fun\\Immutable\\": "src"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fun\\Immutable\\Tests\\": "tests"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

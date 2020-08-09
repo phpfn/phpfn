@@ -9,13 +9,13 @@
 
 declare(strict_types=1);
 
-namespace Fun\Placeholder\Tests;
-
-use PHPUnit\Framework\TestCase as BaseTestCase;
+namespace Fun\Immutable\Exception;
 
 /**
- * Class TestCase
+ * An error occurs if it is not possible to obtain a
+ * context for performing a closure or lambda fn.
  */
-abstract class TestCase extends BaseTestCase
+class ContextException extends IntegrityException
 {
+
 }

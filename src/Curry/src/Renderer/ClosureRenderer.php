@@ -38,7 +38,6 @@ class ClosureRenderer implements Renderable
     private \ReflectionFunction $reflection;
 
     /**
-     * ArgumentsRenderer constructor.
      * @param \Closure $context
      * @param array $left
      * @param array $right
@@ -128,12 +127,12 @@ class ClosureRenderer implements Renderable
     {
         try {
             $id    = $this->getObjectId();
-            $left  = $this->getLeftArguments() ?: '_';
-            $right = $this->getRightArguments() ?: '_';
+            $left  = $this->getLeftArguments() ?: '?';
+            $right = $this->getRightArguments() ?: '?';
             $_this = $this->getThis();
             $_self = $this->getSelf();
 
-            $result[] = \sprintf('curried(%s ... %s) #%d => {', $left, $right, $id);
+            $result[] = \sprintf('curried fn(%s ... %s) #%d => {', $left, $right, $id);
 
             if ($_self) {
                 $result[] = \sprintf('    class: "%s"', $_self);

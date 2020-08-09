@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Fun\Symbol;
 
+use Fun\Symbol\Exception\TypeError;
 use Fun\Symbol\Metadata\Sign;
 use Fun\Symbol\Metadata\SignInterface;
 

@@ -10,13 +10,17 @@
 declare(strict_types=1);
 
 use Fun\Curry\Curried;
+use Fun\Curry\CurriedFunctionInterface;
 
 if (! \function_exists('\\curry')) {
     /**
      * @see lcurry
-     * @return callable|Curried
+     *
+     * @param callable|\ReflectionFunctionAbstract $fn An applicant function
+     * @param array $args Set of arguments for left currying
+     * @return CurriedFunctionInterface
      */
-    function curry($fn, ...$args): callable
+    function curry($fn, ...$args): CurriedFunctionInterface
     {
         return Curried::new($fn)->curry(...$args);
     }
@@ -30,9 +34,9 @@ if (! \function_exists('\\lcurry')) {
      *
      * @param callable|\ReflectionFunctionAbstract $fn An applicant function
      * @param array $args Set of arguments for left currying
-     * @return callable|Curried Returns a partially applied function
+     * @return CurriedFunctionInterface Returns a partially applied function
      */
-    function lcurry($fn, ...$args): callable
+    function lcurry($fn, ...$args): CurriedFunctionInterface
     {
         return Curried::new($fn)->lcurry(...$args);
     }
@@ -46,9 +50,9 @@ if (! \function_exists('\\rcurry')) {
      *
      * @param callable|\ReflectionFunctionAbstract $fn An applicant function
      * @param array $args Set of arguments for right currying
-     * @return callable|Curried Returns a partially applied function
+     * @return CurriedFunctionInterface Returns a partially applied function
      */
-    function rcurry($fn, ...$args): callable
+    function rcurry($fn, ...$args): CurriedFunctionInterface
     {
         return Curried::new($fn)->rcurry(...$args);
     }
@@ -64,10 +68,10 @@ if (! \function_exists('\\uncurry')) {
      * can supplement the missing argument.
      *
      * @param callable|Curried $fn An applicant php or curried function
-     * @return int|float|bool|string|resource|object|\Closure Function result or closure
+     * @return \Closure Function result or closure
      */
     function uncurry(callable $fn): \Closure
     {
-        return ($fn instanceof Curried ? $fn : Curried::new($fn))->uncurry();
+        return ($fn instanceof Curried ? $fn : Curried::new($fn))->toClosure();
     }
 }
