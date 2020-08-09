@@ -3,13 +3,7 @@
     "type": "library",
     "description": "Simple placeholder implementation for functional constructions",
     "license": "MIT",
-    "keywords": [
-        "placeholder",
-        "functional",
-        "high order",
-        "curry",
-        "partial application"
-    ],
+    "keywords": ["placeholder", "functional", "high order", "curry", "partial application"],
     "homepage": "https://github.com/phpfn",
     "support": {
         "issues": "https://github.com/phpfn/phpfn/issues",

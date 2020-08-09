@@ -2,12 +2,7 @@
     "name": "phpfn/immutable",
     "description": "Simple helper to ensure immutable objects",
     "license": "MIT",
-    "keywords": [
-        "immutable",
-        "stateless",
-        "functional",
-        "sugar"
-    ],
+    "keywords": ["immutable", "stateless", "functional", "sugar"],
     "homepage": "https://github.com/phpfn",
     "support": {
         "issues": "https://github.com/phpfn/phpfn/issues",

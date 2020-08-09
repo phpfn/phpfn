@@ -3,12 +3,7 @@
     "type": "library",
     "description": "The Symbol type implementation",
     "license": "MIT",
-    "keywords": [
-        "placeholder",
-        "symbol",
-        "functional",
-        "type"
-    ],
+    "keywords": ["placeholder", "symbol", "functional", "type"],
     "homepage": "https://github.com/phpfn",
     "support": {
         "issues": "https://github.com/phpfn/phpfn/issues",
