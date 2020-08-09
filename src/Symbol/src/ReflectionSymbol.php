@@ -100,7 +100,7 @@ final class ReflectionSymbol implements \Reflector
      * @return string|void
      * @throws \ReflectionException
      *
-     * @deprecated This method is deprecated since 2.0 (PHP 7.4) and will be removed in 3.0 (PHP 8.0)
+     * @deprecated since 2.0 (PHP 7.4) and will be removed in 3.0 (PHP 8.0)
      * @noinspection PhpHierarchyChecksInspection
      * @noinspection PhpSignatureMismatchDuringInheritanceInspection
      */

@@ -13,6 +13,9 @@ namespace Fun\Curry\Renderer;
 
 use Fun\Placeholder\Placeholder;
 
+/**
+ * @internal trait for values rendering
+ */
 trait ValueToString
 {
     /**

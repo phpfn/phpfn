@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Fun\Curry;
 
 /**
- * @deprecated This interface is deprecated in 2.0 and has been removed in 3.0
+ * @deprecated since 2.0 and will be removed in 3.0
  */
 interface Invokable
 {

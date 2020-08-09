@@ -24,6 +24,7 @@
             "Fun\\Curry\\": "src"
         },
         "files": [
+            "src/polyfill.php",
             "src/helpers.php"
         ]
     },

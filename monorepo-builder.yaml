@@ -1,25 +1,25 @@
 parameters:
-  package_alias_format: '<major>.<minor>.x-dev'
-  merge_sections:
-    - 'provide'
-    - 'suggest'
-    - 'require'
-    - 'require-dev'
-    - 'autoload'
-    - 'autoload-dev'
-    - 'repositories'
-  package_directories:
-    - 'src'
-  data_to_append:
-    require-dev:
-      roave/security-advisories: 'dev-master'
-      phpunit/phpunit: '^9.0'
-      symplify/monorepo-builder: '^8.0'
-      squizlabs/php_codesniffer: '^3.0'
-      vimeo/psalm: '^3.6'
-  directories_to_repositories:
-    src/Curry: 'git@github.com:phpfn/curry.git'
-    src/Immutable: 'git@github.com:phpfn/immutable.git'
-    src/Pipe: 'git@github.com:phpfn/pipe.git'
-    src/Placeholder: 'git@github.com:phpfn/placeholder.git'
-    src/Symbol: 'git@github.com:phpfn/symbol.git'
+    package_alias_format: '<major>.<minor>.x-dev'
+    merge_sections:
+        - 'provide'
+        - 'suggest'
+        - 'require'
+        - 'require-dev'
+        - 'autoload'
+        - 'autoload-dev'
+        - 'repositories'
+    package_directories:
+        - 'src'
+    data_to_append:
+        require-dev:
+            roave/security-advisories: 'dev-master'
+            phpunit/phpunit: '^9.0'
+            symplify/monorepo-builder: '^7.0'
+            squizlabs/php_codesniffer: '^3.0'
+            vimeo/psalm: '^3.6'
+    directories_to_repositories:
+        src/Curry: 'git@github.com:phpfn/curry.git'
+        src/Immutable: 'git@github.com:phpfn/immutable.git'
+        src/Pipe: 'git@github.com:phpfn/pipe.git'
+        src/Placeholder: 'git@github.com:phpfn/placeholder.git'
+        src/Symbol: 'git@github.com:phpfn/symbol.git'

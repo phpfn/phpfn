@@ -16,7 +16,7 @@ use Fun\Symbol\Metadata\Sign;
 use Fun\Symbol\Metadata\SignInterface;
 
 /**
- * @internal Internal class for metadata reading and writing.
+ * @internal class for metadata reading and writing.
  */
 final class Metadata
 {

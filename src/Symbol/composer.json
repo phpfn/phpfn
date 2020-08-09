@@ -28,6 +28,7 @@
             "Fun\\Symbol\\": "src"
         },
         "files": [
+            "src/polyfill.php",
             "src/helpers.php"
         ]
     },

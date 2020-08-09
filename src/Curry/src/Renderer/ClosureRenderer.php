@@ -13,6 +13,9 @@ namespace Fun\Curry\Renderer;
 
 use Fun\Curry\Renderable;
 
+/**
+ * @internal class for printing partially applied function
+ */
 class ClosureRenderer implements Renderable
 {
     use ValueToString;

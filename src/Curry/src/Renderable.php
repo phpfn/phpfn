@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Fun\Curry;
 
 /**
- * @deprecated This interface is deprecated since 2.0 and will be removed in 3.0
+ * @deprecated since 2.0 and will be removed in 3.0
  * @see \Stringable please use Stringable interface instead
  */
 interface Renderable extends \Stringable

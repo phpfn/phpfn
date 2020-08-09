@@ -27,6 +27,7 @@
             "Fun\\Immutable\\": "src"
         },
         "files": [
+            "src/polyfill.php",
             "src/helpers.php"
         ]
     },
