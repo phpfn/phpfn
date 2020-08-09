@@ -14,9 +14,6 @@ namespace Fun\Symbol\Tests\Names;
 use Fun\Symbol\Tests\TestCase;
 use Fun\Symbol\TypeError;
 
-/**
- * Class NamesTestCase
- */
 abstract class NamesTestCase extends TestCase
 {
     /**

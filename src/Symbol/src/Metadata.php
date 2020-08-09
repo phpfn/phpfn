@@ -15,8 +15,6 @@ use Fun\Symbol\Metadata\Sign;
 use Fun\Symbol\Metadata\SignInterface;
 
 /**
- * Class Metadata
- *
  * @internal Internal class for metadata reading and writing.
  */
 final class Metadata
@@ -86,7 +84,7 @@ final class Metadata
 
     /**
      * @param resource $resource
-     * @return \Serafim\Symbol\Metadata\SignInterface|null
+     * @return SignInterface|null
      */
     public static function read($resource): ?SignInterface
     {

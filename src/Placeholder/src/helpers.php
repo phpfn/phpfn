@@ -9,16 +9,15 @@
 
 declare(strict_types=1);
 
-
 use Fun\Placeholder\Placeholder;
 use Fun\Symbol\Symbol;
 
-//
-// Register a global placeholder definition
-//
-if (! \defined('_')) {
-    \define('_', Symbol::for(Placeholder::class));
-}
+/**
+ * Register a global placeholder definition.
+ *
+ * @phpcs:disable
+ */
+\defined('_') or \define('_', Symbol::for(Placeholder::class));
 
 
 if (! \function_exists('is_placeholder')) {
@@ -31,3 +30,5 @@ if (! \function_exists('is_placeholder')) {
         return Placeholder::match($value);
     }
 }
+
+

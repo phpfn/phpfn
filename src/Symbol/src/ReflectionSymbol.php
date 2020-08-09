@@ -11,20 +11,12 @@ declare(strict_types=1);
 
 namespace Fun\Symbol;
 
-/**
- * Class ReflectionSymbol
- */
 final class ReflectionSymbol implements \Reflector
 {
     /**
      * @var int
      */
     public const IS_GLOBAL = 16;
-
-    /**
-     * @var string
-     */
-    private const ERROR_TYPE = '%s() expects parameter 1 to be a symbol, but %s given';
 
     /**
      * @var string
@@ -37,12 +29,12 @@ final class ReflectionSymbol implements \Reflector
     /**
      * @var string
      */
-    private $name;
+    private string $name;
 
     /**
      * @var array
      */
-    private $context;
+    private array $context;
 
     /**
      * @var mixed|resource
@@ -50,8 +42,6 @@ final class ReflectionSymbol implements \Reflector
     private $symbol;
 
     /**
-     * ReflectionSymbol constructor.
-     *
      * @param mixed|resource $symbol
      * @throws \ReflectionException
      */
@@ -59,12 +49,10 @@ final class ReflectionSymbol implements \Reflector
     {
         self::assertIsSymbol($symbol, __METHOD__);
 
-        $meta = Metadata::read($symbol);
+        $meta = Metadata::read($this->symbol = $symbol);
 
-        $this->symbol = $symbol;
-
-        $this->name = $meta->getName();
-        $this->context = $meta->getContext();
+        $this->name = $meta ? $meta->getName() : 'unknown';
+        $this->context = $meta ? $meta->getContext() : [];
     }
 
     /**
@@ -109,12 +97,16 @@ final class ReflectionSymbol implements \Reflector
      * @param bool $return
      * @return string|void
      * @throws \ReflectionException
+     *
+     * @deprecated This method is deprecated since 2.0 (PHP 7.4) and will be removed in 3.0 (PHP 8.0)
+     * @noinspection PhpHierarchyChecksInspection
+     * @noinspection PhpSignatureMismatchDuringInheritanceInspection
      */
     public static function export($symbol, bool $return = false)
     {
         self::assertIsSymbol($symbol, __METHOD__);
 
-        $reflection = new static($symbol, Metadata::read($symbol));
+        $reflection = new static($symbol);
 
         $result = \vsprintf(self::EXPORT_FORMAT, [
             $reflection->isGlobal() ? 'global' : 'local',

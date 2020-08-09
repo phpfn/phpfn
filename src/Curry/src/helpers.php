@@ -14,7 +14,6 @@ use Fun\Curry\Curried;
 if (! \function_exists('\\curry')) {
     /**
      * @see lcurry
-     * {@inheritdoc}
      * @return callable|Curried
      */
     function curry($fn, ...$args): callable

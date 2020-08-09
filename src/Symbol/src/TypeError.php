@@ -11,9 +11,6 @@ declare(strict_types=1);
 
 namespace Fun\Symbol;
 
-/**
- * Class TypeError
- */
 class TypeError extends \TypeError
 {
     /**
@@ -41,7 +38,7 @@ class TypeError extends \TypeError
      * @param string $type
      * @param string $given
      * @param int $argument
-     * @return \Serafim\Symbol\TypeError
+     * @return TypeError
      */
     public static function invalidArgument(string $method, string $type, string $given, int $argument = 1): self
     {
@@ -51,7 +48,7 @@ class TypeError extends \TypeError
     }
 
     /**
-     * @return \Serafim\Symbol\TypeError
+     * @return TypeError
      */
     public static function emptyName(): self
     {

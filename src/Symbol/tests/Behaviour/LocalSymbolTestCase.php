@@ -12,15 +12,13 @@ declare(strict_types=1);
 namespace Fun\Symbol\Tests\Behaviour;
 
 use Fun\Symbol\Symbol;
+use PHPUnit\Framework\ExpectationFailedException;
 
-/**
- * Class LocalSymbolTestCase
- */
 class LocalSymbolTestCase extends BehaviourTestCase
 {
     /**
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws ExpectationFailedException
      */
     public function testIsUniqueWithoutName(): void
     {
@@ -32,7 +30,7 @@ class LocalSymbolTestCase extends BehaviourTestCase
 
     /**
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws ExpectationFailedException
      */
     public function testIsUniqueWithSameNames(): void
     {

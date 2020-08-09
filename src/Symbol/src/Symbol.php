@@ -11,9 +11,6 @@ declare(strict_types=1);
 
 namespace Fun\Symbol;
 
-/**
- * Class Symbol
- */
 final class Symbol implements FactoryInterface
 {
     /**
@@ -27,14 +24,14 @@ final class Symbol implements FactoryInterface
     private const ANONYMOUS = 'symbol@anonymous#%d';
 
     /**
-     * @var \Serafim\Symbol\Symbol
+     * @var Symbol|null
      */
-    private static $instance;
+    private static ?self $instance = null;
 
     /**
      * @var array|resource[]|mixed[]
      */
-    private $registry = [];
+    private array $registry = [];
 
     /**
      * Symbol constructor.
@@ -64,7 +61,7 @@ final class Symbol implements FactoryInterface
     }
 
     /**
-     * @return \Serafim\Symbol\Symbol
+     * @return Symbol
      */
     private static function instance(): self
     {
@@ -165,7 +162,6 @@ final class Symbol implements FactoryInterface
     {
         self::assertIsSymbol($symbol, __METHOD__);
 
-        /** @noinspection NullPointerExceptionInspection */
         return new ReflectionSymbol($symbol);
     }
 

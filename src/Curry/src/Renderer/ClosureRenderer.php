@@ -20,22 +20,22 @@ class ClosureRenderer implements Renderable
     /**
      * @var \Closure
      */
-    private $context;
+    private \Closure $context;
 
     /**
      * @var array
      */
-    private $left;
+    private array $left;
 
     /**
      * @var array
      */
-    private $right;
+    private array $right;
 
     /**
      * @var \ReflectionFunction
      */
-    private $reflection;
+    private \ReflectionFunction $reflection;
 
     /**
      * ArgumentsRenderer constructor.

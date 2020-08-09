@@ -12,10 +12,9 @@ declare(strict_types=1);
 namespace Fun\Symbol\Tests\Names;
 
 use Fun\Symbol\Symbol;
+use PHPUnit\Framework\Exception;
+use PHPUnit\Framework\ExpectationFailedException;
 
-/**
- * Class GlobalSymbolNamesTestCase
- */
 class GlobalSymbolNamesTestCase extends NamesTestCase
 {
     /**
@@ -43,8 +42,8 @@ class GlobalSymbolNamesTestCase extends NamesTestCase
      *
      * @param string $name
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
-     * @throws \PHPUnit\Framework\Exception
+     * @throws ExpectationFailedException
+     * @throws Exception
      */
     public function testValidName(string $name): void
     {

@@ -13,15 +13,13 @@ namespace Fun\Symbol\Tests\Behaviour;
 
 use Fun\Symbol\Symbol;
 use Fun\Symbol\Tests\TestCase;
+use PHPUnit\Framework\ExpectationFailedException;
 
-/**
- * Class BehaviourTestCase
- */
 abstract class BehaviourTestCase extends TestCase
 {
     /**
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws ExpectationFailedException
      */
     public function testIsUniqueAfterGlobal(): void
     {
@@ -33,7 +31,7 @@ abstract class BehaviourTestCase extends TestCase
 
     /**
      * @return void
-     * @throws \PHPUnit\Framework\ExpectationFailedException
+     * @throws ExpectationFailedException
      */
     public function testIsUniqueBeforeGlobal(): void
     {

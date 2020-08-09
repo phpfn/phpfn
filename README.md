@@ -11,3 +11,31 @@
     <a href="https://packagist.org/packages/phpfn/"><img src="https://img.shields.io/badge/PHP-8.0%20Compatible-236d98.svg" alt="PHP 8.0 Compatible"></a>
     <a href="https://raw.githubusercontent.com/phpfn/phpfn/master/LICENSE.md"><img src="https://poser.pugx.org/phpfn/phpfn/license" alt="License MIT"></a>
 </p>
+
+## Installation
+
+Library can be installed into any PHP application:
+- Using [`Composer`](https://getcomposer.org/) dependency manager 
+- [The Force](https://www.youtube.com/watch?v=o2we_B6hDrY) for the Jedi Developers
+
+```sh
+$ composer require phpfn/phpfn
+```
+
+In order to access library make sure to include `vendor/autoload.php` 
+in your file.
+
+```php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+```
+
+## Usage
+
+This package includes
+
+- [`phpfn/symbol`](https://github.com/phpfn/symbol) for the ability to create unique identifiers within the system.
+- [`phpfn/placeholder`](https://github.com/phpfn/placeholder) placeholder (looks like that: `_`) symbol implementation.
+- [`phpfn/pipe`](https://github.com/phpfn/pipe) the ability to use a sequence of functions as a chain.
+- [`phpfn/curry`](https://github.com/phpfn/curry) implementation of currying and partial application.

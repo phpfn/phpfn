@@ -13,9 +13,6 @@ namespace Fun\Placeholder;
 
 use Fun\Symbol\Symbol;
 
-/**
- * Class Placeholder
- */
 final class Placeholder
 {
     /**

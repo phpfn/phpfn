@@ -19,22 +19,22 @@ final class Curried implements \Countable, Renderable, Invokable
     /**
      * @var \Closure
      */
-    private $context;
+    private \Closure $context;
 
     /**
      * @var array
      */
-    private $leftArguments = [];
+    private array $leftArguments = [];
 
     /**
      * @var array
      */
-    private $rightArguments = [];
+    private array $rightArguments = [];
 
     /**
      * @var int
      */
-    private $maxArguments = 0;
+    private int $maxArguments = 0;
 
     /**
      * Curried constructor.
@@ -48,7 +48,7 @@ final class Curried implements \Countable, Renderable, Invokable
 
     /**
      * @param callable|\ReflectionFunctionAbstract $callable
-     * @return $this|static|callable|Curried
+     * @return $this|callable|Curried
      */
     public static function new($callable): callable
     {
@@ -66,14 +66,12 @@ final class Curried implements \Countable, Renderable, Invokable
                 return static::fromReflectionFunction($callable);
         }
 
-        return static::fromClosure(function () use ($callable) {
-            return $callable;
-        });
+        return static::fromClosure(fn() => $callable);
     }
 
     /**
      * @param \Closure $callable
-     * @return $this|static|callable|Curried
+     * @return $this|callable|Curried
      */
     public static function fromClosure(\Closure $callable): self
     {
@@ -100,7 +98,7 @@ final class Curried implements \Countable, Renderable, Invokable
 
     /**
      * @param callable $callable
-     * @return $this|static|callable|Curried
+     * @return $this|callable|Curried
      */
     public static function fromCallable(callable $callable): self
     {
@@ -109,7 +107,7 @@ final class Curried implements \Countable, Renderable, Invokable
 
     /**
      * @param \ReflectionMethod $func
-     * @return $this|static|callable|Curried
+     * @return $this|callable|Curried
      */
     public static function fromReflectionMethod(\ReflectionMethod $func): self
     {
@@ -120,7 +118,7 @@ final class Curried implements \Countable, Renderable, Invokable
 
     /**
      * @param \ReflectionFunction $func
-     * @return $this|static|callable|Curried
+     * @return $this|callable|Curried
      */
     public static function fromReflectionFunction(\ReflectionFunction $func): self
     {
@@ -129,7 +127,7 @@ final class Curried implements \Countable, Renderable, Invokable
 
     /**
      * @param mixed ...$args
-     * @return $this|static|callable|mixed|Curried
+     * @return $this|callable|mixed|Curried
      */
     public function __invoke(...$args)
     {
@@ -144,7 +142,7 @@ final class Curried implements \Countable, Renderable, Invokable
 
     /**
      * @param mixed ...$args
-     * @return $this|static|callable|Curried
+     * @return $this|callable|Curried
      */
     public function lcurry(...$args): self
     {
@@ -195,9 +193,7 @@ final class Curried implements \Countable, Renderable, Invokable
     {
         $result = \array_merge($this->leftArguments, $this->rightArguments);
 
-        return \array_filter($result, function ($argument): bool {
-            return ! $this->isPlaceholder($argument);
-        });
+        return \array_filter($result, fn($argument): bool => ! $this->isPlaceholder($argument));
     }
 
     /**
@@ -241,7 +237,7 @@ final class Curried implements \Countable, Renderable, Invokable
 
     /**
      * @param mixed ...$args
-     * @return $this|static|callable|Curried
+     * @return $this|callable|Curried
      */
     public function curry(...$args): self
     {

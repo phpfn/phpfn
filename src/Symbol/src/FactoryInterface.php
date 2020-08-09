@@ -11,9 +11,6 @@ declare(strict_types=1);
 
 namespace Fun\Symbol;
 
-/**
- * Interface FactoryInterface
- */
 interface FactoryInterface
 {
     /**

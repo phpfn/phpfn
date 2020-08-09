@@ -14,14 +14,11 @@ namespace Fun\Symbol\Tests\Reflection;
 use Fun\Symbol\ReflectionSymbol;
 use Fun\Symbol\Symbol;
 
-/**
- * Class FactoryTestCase
- */
 class FactoryTestCase extends ReflectionTestCase
 {
     /**
      * @param mixed $symbol
-     * @return \Serafim\Symbol\ReflectionSymbol
+     * @return ReflectionSymbol
      * @throws \ReflectionException
      */
     protected function reflection($symbol): ReflectionSymbol

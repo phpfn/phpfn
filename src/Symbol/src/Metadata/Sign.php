@@ -11,20 +11,17 @@ declare(strict_types=1);
 
 namespace Fun\Symbol\Metadata;
 
-/**
- * Class Sign
- */
 final class Sign implements SignInterface
 {
     /**
      * @var string
      */
-    private $name;
+    private string $name;
 
     /**
      * @var array
      */
-    private $context;
+    private array $context;
 
     /**
      * Sign constructor.

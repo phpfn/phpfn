@@ -13,9 +13,6 @@ namespace Fun\Curry\Tests;
 
 use PHPUnit\Framework\TestCase as BaseTestCase;
 
-/**
- * Class FuncTestCase
- */
 abstract class TestCase extends BaseTestCase
 {
 
