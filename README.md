@@ -5,6 +5,7 @@
     <a href="https://travis-ci.org/github/phpfn/phpfn"><img src="https://travis-ci.org/phpfn/phpfn.svg?branch=master" alt="Travis CI" /></a>
     <a href="https://codeclimate.com/github/phpfn/phpfn/test_coverage"><img src="https://api.codeclimate.com/v1/badges/47017eee0be4b7544b1b/test_coverage" /></a>
     <a href="https://codeclimate.com/github/phpfn/phpfn/maintainability"><img src="https://api.codeclimate.com/v1/badges/47017eee0be4b7544b1b/maintainability" /></a>
+    <a href="https://scrutinizer-ci.com/g/phpfn/phpfn/?branch=master"><img src="https://scrutinizer-ci.com/g/phpfn/phpfn/badges/quality-score.png?b=master" /></a>
 </p>
 <p align="center">
     <a href="https://packagist.org/packages/phpfn/"><img src="https://img.shields.io/badge/PHP-7.4+-236d98.svg" alt="PHP 7.4+"></a>
