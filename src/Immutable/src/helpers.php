@@ -13,11 +13,10 @@ use Fun\Immutable\Immutable;
 
 if (! function_exists('immutable')) {
     /**
-     * @psalm-param \Closure(): void $callable
-     *
+     * @template T of object
      * @param Closure $expr
-     * @param object|null $context
-     * @return object
+     * @param T|null $context
+     * @return T
      */
     function immutable(\Closure $expr, object $context = null): object
     {

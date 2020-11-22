@@ -37,11 +37,10 @@ final class Immutable
     }
 
     /**
-     * @psalm-param \Closure(): void $callable
-     *
+     * @template T of object
      * @param \Closure $expr
-     * @param object|null $context
-     * @return object
+     * @param T|null $context
+     * @return T
      */
     public static function make(\Closure $expr, object $context = null): object
     {
@@ -59,9 +58,10 @@ final class Immutable
     }
 
     /**
+     * @template T of object
      * @param \Closure $callable
-     * @param object|null $context
-     * @return object
+     * @param T|null $context
+     * @return T
      */
     private static function resolveContext(\Closure $callable, object $context = null): object
     {
